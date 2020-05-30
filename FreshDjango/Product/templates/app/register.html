@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block body-block %}
+
+<div class="container"><h1 class="">Registration</h1></div>
+
+<div class="container">
+  
+  {% if registered %}
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Registed Successfully!</h1>
+        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+      </div>
+    </div>  
+  {% else %}
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">Please fill out the details</h1>
+        <form enctype="multipart/form-data" method="POST">
+          {{ user_form.as_p }}
+          {{ profile_form.as_p }}
+          {% csrf_token %}
+          <input type="submit" value="Register">
+        </form>
+      </div>
+    </div>
+  {% endif %}
+    
+</div>
+    <!-- Example of Spinner -->
+    <!-- {% for _ in "fives" %}
+        <div class="spinner-grow text-info spinner-grow-sm" role="status">
+            <span class="sr-only" disabled>Loading...</span>
+        </div>      
+    {% endfor %} -->
+{% endblock body-block %}
+    
